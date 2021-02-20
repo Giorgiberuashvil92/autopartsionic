@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>registration</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm">
+    <ion-item lines="full">
+      <ion-label position="floating">First name</ion-label>
+      <ion-input type="text" required formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating" >Last name</ion-label>
+      <ion-input type="text" required formControlName="lastName"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating" >userName</ion-label>
+      <ion-input type="text" required formControlName="username"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating" >Password</ion-label>
+      <ion-input type="password" required formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating" >Mobile Phone</ion-label>
+      <ion-input type="phone" required formControlName="phone"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block" (click)="onRegisterFormSubmit()">Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

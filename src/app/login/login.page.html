@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm">
+
+    <ion-item lines="full">
+      <ion-label position="floating" >Email</ion-label>
+      <ion-input type="text" required formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col >
+        <ion-button type="submit" color="danger" expand="block" (click)="onLoginFormSubmit()">Sign In</ion-button>
+        <div class="ion-text-center">
+          <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

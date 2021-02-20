@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Auto Parts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-grid class="login-form">
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/register']" expand="block" color="primary">Register</ion-button>
+
+        <div class="ion-text-center marg">
+          <span class="already">Already a user?</span>
+        </div>
+
+        <ion-button [routerLink]="['/login']" expand="block" color="danger">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
