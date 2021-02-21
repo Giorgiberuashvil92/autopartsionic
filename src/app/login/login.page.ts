@@ -3,9 +3,10 @@ import { Storage } from '@ionic/storage';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {AuthService} from '../services/auth.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {LoginRes} from '../models/login.model';
 import {AuthGuard} from '../auth/auth.guard';
+import {filter} from 'rxjs/operators';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
   constructor(private storing: Storage,
               private authService: AuthService,
               private router: Router,
+              private window: Window
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,12 @@ export class LoginPage implements OnInit {
       this.authService.setToken(res.token);
       this.authService.setEmail(res.email);
       this.authService.setLoggedIn(true);
-      this.router.navigate(['/client-side']).then(r => console.log('Everything is working'));
+      this.router.navigate(['/client-side'], { skipLocationChange: true}).then(r => console.log('Replace'));
+      this.router.events.pipe(filter(value => value instanceof NavigationEnd), ).subscribe(event => {
+        if (!(event instanceof RouterEvent) || event.url.includes('client-side')){
+          this.window.location.reload();
+        }
+      });
     }, (err) => {
       this.errMsg = err.error.message;
       console.error(err);

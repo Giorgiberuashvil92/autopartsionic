@@ -13,7 +13,7 @@ import {AuthGuard} from './auth/auth.guard';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot()],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CookieService, AuthGuard],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, CookieService, AuthGuard, {provide: Window, useValue: window}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

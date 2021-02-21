@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ClientSidePageRoutingModule } from './client-side-routing.module';
 
 import { ClientSidePage } from './client-side.page';
+import {SidemenuPageModule} from '../sidemenu/sidemenu.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ClientSidePageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ClientSidePageRoutingModule,
+        SidemenuPageModule
+    ],
   declarations: [ClientSidePage]
 })
 export class ClientSidePageModule {}

@@ -19,9 +19,6 @@ export class AuthService {
   public tokenValid: any;
   constructor(private httpClient: HttpClient, private platform: Platform) {
     this.tokenValid = localStorage.getItem(this.authTokenStorageKey);
-    this.platform.ready().then(async () => {
-
-    })
   }
 
 
@@ -42,12 +39,14 @@ export class AuthService {
   setToken(token: string): void {
     localStorage.setItem(this.authTokenStorageKey, token);
   }
+
   getToken(){
     return this.tokenValid;
   }
   get isLoggedIn(): boolean {
     return this.loggedIn;
   }
+
   setLoggedIn(state: boolean): void {
     this.loggedIn = state;
   }

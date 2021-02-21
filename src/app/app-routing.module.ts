@@ -24,7 +24,11 @@ const routes: Routes = [
   },
   {
     path: 'client-side',
-    loadChildren: () => import('./client-side/client-side.module').then( m => m.ClientSidePageModule),
+    loadChildren: () => import('./client-side/client-side.module').then( m => m.ClientSidePageModule), canLoad: [AuthGuard]
+  },
+  {
+    path: 'sidemenu',
+    loadChildren: () => import('./sidemenu/sidemenu.module').then( m => m.SidemenuPageModule)
   },
 ];
 

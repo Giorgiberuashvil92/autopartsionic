@@ -1,10 +1,10 @@
-import { HomePage } from './home/home.page';
-import {Component, OnInit} from '@angular/core';
-import { StatusBarAnimationOptions } from '@capacitor/core';
-import {AlertController, NavController, Platform} from '@ionic/angular';
-import {AuthService} from './services/auth.service';
-import {Route, Router} from '@angular/router';
 
+import {Component, OnInit} from '@angular/core';
+import {AlertController, Platform} from '@ionic/angular';
+import {AuthService} from './services/auth.service';
+import {Router} from '@angular/router';
+
+// @ts-ignore
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,11 +14,18 @@ export class AppComponent implements OnInit{
   subscribe: any;
   constructor(
     private platform: Platform,
-    private allertController: AlertController,
+    private alertController: AlertController,
     private authService: AuthService,
     public  route: Router,
-    public navController: NavController,
+    public window: Window,
   ) {
+    setTimeout(() => {
+      if (this.authService.getToken()){
+        this.route.navigate(['client-side']).then(r => console.log(r));
+      } else {
+        this.route.navigate(['home']).then(r => console.log(r));
+      }
+    });
   }
   ngOnInit(){}
 }
